@@ -1,5 +1,4 @@
-﻿
-namespace Team7.LoLAPIManager.Services
+﻿namespace Team7.LoLAPIManager.Services
 {
     using System;
     using System.Threading.Tasks;

@@ -1,13 +1,9 @@
-﻿
-namespace Team7.LoLAPIManager
+﻿namespace Team7.LoLAPIManager
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Runtime.Serialization.Json;
     using System.Text;
-    using System.Threading.Tasks;
     using System.Xml.Serialization;
 
     public static class WebUtility
@@ -23,7 +19,7 @@ namespace Team7.LoLAPIManager
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
                 return (T)serializer.ReadObject(stream);
-            }          
+            }
         }
 
         public static T DeSerializeXml<T>(string content)

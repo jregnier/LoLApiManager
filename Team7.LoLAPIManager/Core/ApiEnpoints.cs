@@ -1,7 +1,5 @@
-﻿
-namespace Team7.LoLAPIManager.Core
+﻿namespace Team7.LoLAPIManager.Core
 {
-    using System;
     using System.Collections.Generic;
 
     public enum ApiEndPoints

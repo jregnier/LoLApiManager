@@ -1,9 +1,8 @@
-﻿
-namespace Team7.LoLAPIManager.Core
+﻿namespace Team7.LoLAPIManager.Core
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class RateLimit
     {
@@ -40,9 +39,9 @@ namespace Team7.LoLAPIManager.Core
 
             // Get the request that are within the rate passed in
             var requestsInRate = (from call in hash
-                                 where call >= DateTime.Now.AddSeconds(-rateInSeconds)
-                                 orderby call ascending
-                                 select call).ToList();
+                                  where call >= DateTime.Now.AddSeconds(-rateInSeconds)
+                                  orderby call ascending
+                                  select call).ToList();
 
             int delay = 0;
 
@@ -55,6 +54,5 @@ namespace Team7.LoLAPIManager.Core
 
             return delay;
         }
-
     }
 }

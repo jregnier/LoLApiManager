@@ -1,5 +1,4 @@
-﻿
-namespace Team7.LoLAPIManager
+﻿namespace Team7.LoLAPIManager
 {
     using System;
     using Team7.LoLAPIManager.Core;
@@ -22,10 +21,10 @@ namespace Team7.LoLAPIManager
             if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
-            } 
+            }
 
             this.Key = key;
-            this.Region = region;               
+            this.Region = region;
         }
     }
 }

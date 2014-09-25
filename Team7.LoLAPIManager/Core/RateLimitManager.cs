@@ -1,5 +1,4 @@
-﻿
-namespace Team7.LoLAPIManager.Core
+﻿namespace Team7.LoLAPIManager.Core
 {
     using System;
     using System.Collections.Generic;
@@ -25,7 +24,7 @@ namespace Team7.LoLAPIManager.Core
             }
         }
 
-        #endregion
+        #endregion Singleton
 
         public void Add(string key)
         {
@@ -51,7 +50,7 @@ namespace Team7.LoLAPIManager.Core
             {
                 // Do an async delay based on the biggest delay calculated, then add 500 milliseconds
                 await Task.Delay(Math.Max(delay1, delay2) + 500);
-            }           
+            }
 
             rateLimit.WebServiceCalls.Add(DateTime.Now);
         }

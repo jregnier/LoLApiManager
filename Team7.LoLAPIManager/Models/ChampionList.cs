@@ -1,5 +1,4 @@
-﻿
-namespace Team7.LoLAPIManager.Models
+﻿namespace Team7.LoLAPIManager.Models
 {
     using System.Collections.Generic;
 

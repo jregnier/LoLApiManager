@@ -1,11 +1,11 @@
-﻿
-namespace Team7.LoLAPIManager.Services
+﻿namespace Team7.LoLAPIManager.Services
 {
     using System;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
     using Team7.LoLAPIManager.Core;
+    using Team7.LoLAPIManager.Core.Exceptions;
 
     public abstract class ServiceBase
     {
@@ -15,8 +15,7 @@ namespace Team7.LoLAPIManager.Services
 
         private const string versionedURL = "api/lol/{0}/{1}/";
 
-        #endregion
-
+        #endregion Constants
 
         #region Properties
 
@@ -34,8 +33,7 @@ namespace Team7.LoLAPIManager.Services
 
         public bool IsVersioned { get; set; }
 
-        #endregion
-
+        #endregion Properties
 
         #region Constructors
 
@@ -55,7 +53,7 @@ namespace Team7.LoLAPIManager.Services
 
             BaseUri = new Uri(string.Format(baseURL, Regions.GetRegions[region]));
 
-            if(IsVersioned)
+            if (IsVersioned)
             {
                 VersionedUri = new Uri(string.Format(versionedURL, Regions.GetRegions[region], Versions.GetVersions[ver]), UriKind.Relative);
             }
@@ -65,13 +63,13 @@ namespace Team7.LoLAPIManager.Services
             RateLimitManager.Instance.Add(ApiKey);
         }
 
-        #endregion
+        #endregion Constructors
 
         /// <summary>
         /// Do a Web Get for the given request Uri .
         /// </summary>
         /// <typeparam name="T">The Type of object to serialize the object into.</typeparam>
-        /// <param name="requestUri">The request uri to append to the end of the base Uri.</param>
+        /// <param name="requestUri">The request URL to append to the end of the base Uri.</param>
         /// <returns>The given <see cref="T"/> object.</returns>
         protected async Task<T> WebGetAsync<T>(Uri requestUri) where T : class
         {
@@ -91,13 +89,36 @@ namespace Team7.LoLAPIManager.Services
                     T obj = WebUtility.DeSerializeJson<T>(jsonString);
                     return obj;
                 }
+                else
+                {
+                    string message = await response.Content.ReadAsStringAsync();
+
+                    switch ((int)response.StatusCode)
+                    {
+                        case (int)LoLApiErrors.BadRequest:
+                            throw new LoLApiException<BadRequest>(message);
+                        case (int)LoLApiErrors.Unauthorized:
+                            throw new LoLApiException<Unauthorized>(message);
+                        case (int)LoLApiErrors.GameDataNotFound:
+                            throw new LoLApiException<GameDataNotFound>(message);
+                        case (int)LoLApiErrors.RateLimitExceeded:
+                            throw new LoLApiException<RateLimitExceeded>(message);
+                        case (int)LoLApiErrors.InternalServerError:
+                            throw new LoLApiException<InternalServerError>(message);
+                        case (int)LoLApiErrors.ServiceUnavailable:
+                            throw new LoLApiException<ServiceUnavailable>(message);
+                        default:
+                            response.EnsureSuccessStatusCode();
+                            break;
+                    }
+                }
             }
 
             return null;
         }
 
         /// <summary>
-        /// Build the Uri to make the web call 
+        /// Build the Uri to make the web call
         /// </summary>
         /// <param name="requestUri">The request Uri to use in the Total Uri</param>
         /// <returns>The built Uri</returns>

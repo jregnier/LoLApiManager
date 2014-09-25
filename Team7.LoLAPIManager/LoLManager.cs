@@ -1,15 +1,12 @@
-﻿
-namespace Team7.LoLAPIManager
+﻿namespace Team7.LoLAPIManager
 {
     using System;
-using Team7.LoLAPIManager.Core;
-using Team7.LoLAPIManager.Models;
-using Team7.LoLAPIManager.Services;
+    using Team7.LoLAPIManager.Core;
+    using Team7.LoLAPIManager.Services;
 
     public class LoLManager
     {
-
-        #region SingleTon 
+        #region SingleTon
 
         private static LoLManager _instance;
         private bool _isInitialized;
@@ -70,7 +67,7 @@ using Team7.LoLAPIManager.Services;
             _isInitialized = true;
         }
 
-        #endregion
+        #endregion SingleTon
 
         private LoLManagerConfig _configuration;
         private ChampionService _champions;
@@ -103,6 +100,6 @@ using Team7.LoLAPIManager.Services;
             }
         }
 
-        #endregion
+        #endregion Public Interface
     }
 }
