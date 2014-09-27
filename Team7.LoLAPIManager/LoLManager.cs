@@ -69,8 +69,9 @@
 
         #endregion SingleTon
 
+        private ChampionService _champion;
         private LoLManagerConfig _configuration;
-        private ChampionService _champions;
+        private GameService _game;
 
         public LoLManagerConfig Configuration
         {
@@ -91,12 +92,25 @@
         {
             get
             {
-                if (_champions == null)
+                if (_champion == null)
                 {
-                    _champions = new ChampionService(_configuration);
+                    _champion = new ChampionService(_configuration);
                 }
 
-                return _champions;
+                return _champion;
+            }
+        }
+
+        public GameService Game
+        {
+            get
+            {
+                if (_game == null)
+                {
+                    _game = new GameService(_configuration);
+                }
+
+                return _game;
             }
         }
 

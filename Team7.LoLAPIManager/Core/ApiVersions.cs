@@ -13,6 +13,7 @@
         V2_2,
         V2_3,
         V2_4,
+        V2_5,
         NONE
     }
 
@@ -36,7 +37,8 @@
                         { ApiVersions.V2_1, "v2.1" },
                         { ApiVersions.V2_2, "v2.2" },
                         { ApiVersions.V2_3, "v2.3" },
-                        { ApiVersions.V2_4, "v2.4" }
+                        { ApiVersions.V2_4, "v2.4" },
+                        { ApiVersions.V2_4, "v2.5" }
                     };
                 }
 

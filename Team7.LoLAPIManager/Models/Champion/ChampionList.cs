@@ -1,4 +1,4 @@
-﻿namespace Team7.LoLAPIManager.Models
+﻿namespace Team7.LoLAPIManager.Models.Champion
 {
     using System.Collections.Generic;
 

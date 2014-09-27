@@ -25,6 +25,8 @@
 
             this.Key = key;
             this.Region = region;
+
+            //TODO: Add a configuration to keep X amount of service calls in memory
         }
     }
 }

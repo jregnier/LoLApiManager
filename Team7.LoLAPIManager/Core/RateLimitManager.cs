@@ -38,7 +38,7 @@
         /// Handle the rate limits for the Riot API
         /// </summary>
         /// <param name="key">The Riot Api Key given for the application</param>
-        public async Task HandleRateAsync(string key)
+        public void HandleRate(string key)
         {
             RateLimit rateLimit = this.Where(r => r.Key == key).FirstOrDefault();
 
@@ -49,7 +49,7 @@
             if (delay1 != 0 || delay2 != 0)
             {
                 // Do an async delay based on the biggest delay calculated, then add 500 milliseconds
-                await Task.Delay(Math.Max(delay1, delay2) + 500);
+                Task.Delay(Math.Max(delay1, delay2) + 500);
             }
 
             rateLimit.WebServiceCalls.Add(DateTime.Now);

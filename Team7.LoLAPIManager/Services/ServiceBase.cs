@@ -19,30 +19,28 @@
 
         #region Properties
 
+        public string ApiKey { get; private set; }
+
         public Uri BaseUri { get; set; }
 
-        public Uri VersionedUri { get; set; }
+        public ApiEndPoints EndPoint { get; private set; }
+
+        public bool IsVersioned { get; set; }
 
         public ApiRegions Region { get; set; }
 
         public ApiVersions Version { get; private set; }
 
-        public ApiEndPoints EndPoint { get; private set; }
-
-        public string ApiKey { get; private set; }
-
-        public bool IsVersioned { get; set; }
+        public Uri VersionedUri { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
-        /// <summary>
-        /// Construct a new instance of the <see cref="Service Base"/> Class.
-        /// </summary>
-        /// <param name="region">The region to use in the web service calls.</param>
-        /// <param name="ver"><The version of the particular service.</param>
-        /// <param name="endPoint">The end point for the given service.</param>
+        /// <summary> Construct a new instance of the <see cref="Service Base"/> Class. </summary>
+        /// <param name="region">The region to use in the web service calls.</param> <param
+        /// name="ver"><The version of the particular service.</param> <param name="endPoint">The
+        /// end point for the given service.</param>
         public ServiceBase(ApiRegions region, ApiVersions ver, ApiEndPoints endPoint, string key, bool isVersioned)
         {
             Region = region;
@@ -66,6 +64,39 @@
         #endregion Constructors
 
         /// <summary>
+        /// Build the Uri to make the web call
+        /// </summary>
+        /// <param name="requestUri">The request Uri to use in the Total Uri</param>
+        /// <returns>The built Uri</returns>
+        protected virtual Uri BuildUri(Uri requestUri)
+        {
+            string uriString = BaseUri.OriginalString;
+
+            if (IsVersioned)
+            {
+                uriString += VersionedUri.OriginalString;
+            }
+
+            uriString += EndPoints.GetEndPoints[EndPoint];
+
+            if (requestUri != null)
+            {
+                uriString += requestUri;
+            }
+
+            UriBuilder uriBuilder = new UriBuilder(uriString);
+            uriBuilder.Port = -1;
+            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
+                uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + string.Format("api_key={0}", ApiKey);
+            else
+                uriBuilder.Query = string.Format("api_key={0}", ApiKey);
+
+            return uriBuilder.Uri;
+        }
+
+        protected abstract void CreateMapping();
+
+        /// <summary>
         /// Do a Web Get for the given request Uri .
         /// </summary>
         /// <typeparam name="T">The Type of object to serialize the object into.</typeparam>
@@ -73,7 +104,7 @@
         /// <returns>The given <see cref="T"/> object.</returns>
         protected async Task<T> WebGetAsync<T>(Uri requestUri) where T : class
         {
-            await RateLimitManager.Instance.HandleRateAsync(ApiKey);
+            RateLimitManager.Instance.HandleRate(ApiKey);
 
             using (var client = new HttpClient())
             {
@@ -116,33 +147,5 @@
 
             return null;
         }
-
-        /// <summary>
-        /// Build the Uri to make the web call
-        /// </summary>
-        /// <param name="requestUri">The request Uri to use in the Total Uri</param>
-        /// <returns>The built Uri</returns>
-        protected virtual Uri BuildUri(Uri requestUri)
-        {
-            string uriString = BaseUri.OriginalString;
-
-            if (IsVersioned)
-            {
-                uriString += VersionedUri.OriginalString;
-            }
-
-            uriString += requestUri;
-
-            UriBuilder uriBuilder = new UriBuilder(uriString);
-            uriBuilder.Port = -1;
-            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
-                uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + string.Format("api_key={0}", ApiKey);
-            else
-                uriBuilder.Query = string.Format("api_key={0}", ApiKey);
-
-            return uriBuilder.Uri;
-        }
-
-        protected abstract void CreateMapping();
     }
 }

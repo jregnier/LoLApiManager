@@ -5,14 +5,16 @@
     using AutoMapper;
     using Team7.LoLAPIManager.Core;
     using Team7.LoLAPIManager.Dto;
+    using Team7.LoLAPIManager.Dto.Champion;
     using Team7.LoLAPIManager.Models;
+    using Team7.LoLAPIManager.Models.Champion;
 
     public class ChampionService : ServiceBase
     {
         private ChampionList _allChampions;
+        private Champion _champion;
         private ChampionList _freeChampions;
         private ChampionList _notFreeChampions;
-        private Champion _champion;
 
         public ChampionService(LoLManagerConfig config)
             : base(config.Region, ApiVersions.V1_2, ApiEndPoints.CHAMPIONS, config.Key, true)
@@ -23,7 +25,7 @@
         {
             if (_allChampions == null)
             {
-                var champs = await WebGetAsync<ChampionListDto>(new Uri("champion", UriKind.Relative));
+                var champs = await WebGetAsync<ChampionListDto>(null);
                 _allChampions = Mapper.Map<ChampionList>(champs);
             }
 
@@ -36,7 +38,7 @@
             {
                 if (_freeChampions == null)
                 {
-                    var champs = await WebGetAsync<ChampionListDto>(new Uri("champion?freeToPlay=true", UriKind.Relative));
+                    var champs = await WebGetAsync<ChampionListDto>(new Uri("?freeToPlay=true", UriKind.Relative));
                     _freeChampions = Mapper.Map<ChampionList>(champs);
                 }
 
@@ -46,7 +48,7 @@
             {
                 if (_notFreeChampions == null)
                 {
-                    var champs = await WebGetAsync<ChampionListDto>(new Uri("champion?freeToPlay=false", UriKind.Relative));
+                    var champs = await WebGetAsync<ChampionListDto>(new Uri("?freeToPlay=false", UriKind.Relative));
                     _notFreeChampions = Mapper.Map<ChampionList>(champs);
                 }
 
@@ -56,7 +58,7 @@
 
         public async Task<Champion> GetAsync(int id)
         {
-            var champ = await WebGetAsync<ChampionDto>(new Uri(string.Format("champion/{0}", id), UriKind.Relative));
+            var champ = await WebGetAsync<ChampionDto>(new Uri(string.Format("/{0}", id), UriKind.Relative));
             _champion = Mapper.Map<Champion>(champ);
 
             return _champion;

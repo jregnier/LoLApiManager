@@ -1,4 +1,4 @@
-﻿namespace Team7.LoLAPIManager.Dto
+﻿namespace Team7.LoLAPIManager.Dto.Champion
 {
     using System.Runtime.Serialization;
 

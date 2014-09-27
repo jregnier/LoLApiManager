@@ -45,13 +45,21 @@
     <Compile Include="Core\LoLApiErrors.cs" />
     <Compile Include="Core\RateLimit.cs" />
     <Compile Include="Core\RateLimitManager.cs" />
-    <Compile Include="Models\Champion.cs" />
-    <Compile Include="Models\ChampionList.cs" />
+    <Compile Include="Dto\Game\GameDto.cs" />
+    <Compile Include="Dto\Game\PlayerDto.cs" />
+    <Compile Include="Dto\Game\RawStatsDto.cs" />
+    <Compile Include="Dto\Game\RecentGamesDto.cs" />
+    <Compile Include="Models\Champion\Champion.cs" />
+    <Compile Include="Models\Champion\ChampionList.cs" />
     <Compile Include="Core\ApiRegions.cs" />
-    <Compile Include="Dto\ChampionDto.cs" />
-    <Compile Include="Dto\ChampionListDto.cs" />
+    <Compile Include="Dto\Champion\ChampionDto.cs" />
+    <Compile Include="Dto\Champion\ChampionListDto.cs" />
     <Compile Include="LoLManager.cs" />
     <Compile Include="LoLManagerConfig.cs" />
+    <Compile Include="Models\Game\Game.cs" />
+    <Compile Include="Models\Game\Player.cs" />
+    <Compile Include="Models\Game\RawStats.cs" />
+    <Compile Include="Models\Game\RecentGames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\ApiEnpoints.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -60,6 +68,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\ChampionService.cs" />
+    <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\LeagueService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Core\ApiVersions.cs" />
     <Compile Include="WebUtility.cs" />
@@ -78,6 +88,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
