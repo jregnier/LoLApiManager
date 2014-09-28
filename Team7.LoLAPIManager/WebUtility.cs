@@ -1,4 +1,8 @@
-﻿namespace Team7.LoLAPIManager
+﻿// <copyright file="WebUtility.cs" company="Team7 Productions">
+//     Copyright (c) 2014. All rights reserved.
+// </copyright>
+// <author>Jason Regnier</author>
+namespace Team7.LoLAPIManager
 {
     using System;
     using System.IO;
@@ -6,8 +10,15 @@
     using System.Text;
     using System.Xml.Serialization;
 
+    /// <summary>
+    /// Utility class related to web.
+    /// </summary>
     public static class WebUtility
     {
+        /// <summary> Deserialize the JSON content string into the given type. </summary> <typeparam
+        /// name="T">The type of object to deserialize into.</typeparam> <param name="content">The
+        /// string content to deserialize</param> <returns>A <see cref="{DeSerializeJson<T>}"/>
+        /// filled with the content.</returns>
         public static T DeSerializeJson<T>(string content)
         {
             if (string.IsNullOrEmpty(content))
@@ -22,6 +33,10 @@
             }
         }
 
+        /// <summary> Deserialize the XML content string into the given type. </summary> <typeparam
+        /// name="T">The type of object to deserialize into.</typeparam> <param name="content">The
+        /// string content to deserialize</param> <returns>A <see cref="{DeSerializeJson<T>}"/>
+        /// filled with the content.</returns>
         public static T DeSerializeXml<T>(string content)
         {
             if (string.IsNullOrEmpty(content))

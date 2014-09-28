@@ -36,7 +36,7 @@
   <ItemGroup>
     <Compile Include="Core\Exceptions\BadRequest.cs" />
     <Compile Include="Core\Exceptions\BaseLoLException.cs" />
-    <Compile Include="Core\Exceptions\GameDataNotFound.cs" />
+    <Compile Include="Core\Exceptions\DataNotFound.cs" />
     <Compile Include="Core\Exceptions\InternalServerError.cs" />
     <Compile Include="Core\Exceptions\LoLApiException.cs" />
     <Compile Include="Core\Exceptions\RateLimitExceeded.cs" />
@@ -60,6 +60,9 @@
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\RawStats.cs" />
     <Compile Include="Models\Game\RecentGames.cs" />
+    <Compile Include="Models\League\League.cs" />
+    <Compile Include="Models\League\LeagueEntry.cs" />
+    <Compile Include="Models\League\MiniSeries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\ApiEnpoints.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

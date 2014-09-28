@@ -1,16 +1,17 @@
-﻿namespace Team7.LoLAPIManager
+﻿// <copyright file="LoLManagerConfig.cs" company="Team7 Productions">
+//     Copyright (c) 2014. All rights reserved.
+// </copyright>
+// <author>Jason Regnier</author>
+namespace Team7.LoLAPIManager
 {
     using System;
     using Team7.LoLAPIManager.Core;
 
+    /// <summary>
+    /// Object holding the configuration properties needed to communicate with the Riot API.
+    /// </summary>
     public class LoLManagerConfig
     {
-        public string Key { get; set; }
-
-        public ApiRegions Region { get; set; }
-
-        public string RegionString { get { return Regions.GetRegions[Region]; } }
-
         /// <summary>
         /// Create a new instance of the <see cref="LoLManagerConfig"/> Class.
         /// </summary>
@@ -28,5 +29,11 @@
 
             //TODO: Add a configuration to keep X amount of service calls in memory
         }
+
+        public string Key { get; set; }
+
+        public ApiRegions Region { get; set; }
+
+        public string RegionString { get { return Regions.GetRegions[Region]; } }
     }
 }

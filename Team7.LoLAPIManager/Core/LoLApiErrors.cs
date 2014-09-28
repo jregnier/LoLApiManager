@@ -4,7 +4,7 @@
     {
         BadRequest = 400,
         Unauthorized = 401,
-        GameDataNotFound = 404,
+        DataNotFound = 404,
         RateLimitExceeded = 429,
         InternalServerError = 500,
         ServiceUnavailable = 503

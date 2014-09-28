@@ -1,4 +1,8 @@
-﻿namespace Team7.LoLAPIManager
+﻿// <copyright file="LoLManager.cs" company="Team7 Productions">
+//     Copyright (c) 2014. All rights reserved.
+// </copyright>
+// <author>Jason Regnier</author>
+namespace Team7.LoLAPIManager
 {
     using System;
     using Team7.LoLAPIManager.Core;

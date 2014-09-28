@@ -1,4 +1,8 @@
-﻿namespace Team7.LoLAPIManager.Services
+﻿// <copyright file="ServiceBase.cs" company="Team7 Productions">
+//     Copyright (c) 2014. All rights reserved.
+// </copyright>
+// <author>Jason Regnier</author>
+namespace Team7.LoLAPIManager.Services
 {
     using System;
     using System.Net.Http;
@@ -7,6 +11,9 @@
     using Team7.LoLAPIManager.Core;
     using Team7.LoLAPIManager.Core.Exceptions;
 
+    /// <summary>
+    /// Base class for all of Riots LoL services.
+    /// </summary>
     public abstract class ServiceBase
     {
         #region Constants
@@ -37,7 +44,7 @@
 
         #region Constructors
 
-        /// <summary> Construct a new instance of the <see cref="Service Base"/> Class. </summary>
+        /// <summary> Construct a new instance of the <see cref="ServiceBase"/> Class. </summary>
         /// <param name="region">The region to use in the web service calls.</param> <param
         /// name="ver"><The version of the particular service.</param> <param name="endPoint">The
         /// end point for the given service.</param>
@@ -130,8 +137,8 @@
                             throw new LoLApiException<BadRequest>(message);
                         case (int)LoLApiErrors.Unauthorized:
                             throw new LoLApiException<Unauthorized>(message);
-                        case (int)LoLApiErrors.GameDataNotFound:
-                            throw new LoLApiException<GameDataNotFound>(message);
+                        case (int)LoLApiErrors.DataNotFound:
+                            throw new LoLApiException<DataNotFound>(message);
                         case (int)LoLApiErrors.RateLimitExceeded:
                             throw new LoLApiException<RateLimitExceeded>(message);
                         case (int)LoLApiErrors.InternalServerError:
