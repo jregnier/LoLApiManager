@@ -7,6 +7,7 @@ namespace Team7.LoLAPIManager.Services
     using System;
     using System.Threading.Tasks;
     using AutoMapper;
+    using Team7.LoLAPIManager;
     using Team7.LoLAPIManager.Core;
     using Team7.LoLAPIManager.Dto.Game;
     using Team7.LoLAPIManager.Models.Game;
@@ -16,8 +17,6 @@ namespace Team7.LoLAPIManager.Services
     /// </summary>
     public class GameService : ServiceBase
     {
-        private RecentGames _recentGames;
-
         /// <summary>
         /// Create a new instance of the <see cref="GameService"/> service.
         /// </summary>
@@ -48,7 +47,8 @@ namespace Team7.LoLAPIManager.Services
         protected override void CreateMapping()
         {
             Mapper.CreateMap<RecentGamesDto, RecentGames>();
-            Mapper.CreateMap<GameDto, Game>();
+            Mapper.CreateMap<GameDto, Game>()
+                .ForMember(dest => dest.CreateDate, source => source.MapFrom(s => s.CreateDate.EpochToDateTime()));
             Mapper.CreateMap<PlayerDto, Player>();
             Mapper.CreateMap<RawStatsDto, RawStats>();
         }

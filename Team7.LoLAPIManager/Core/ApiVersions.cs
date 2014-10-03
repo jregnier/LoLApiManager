@@ -38,7 +38,7 @@
                         { ApiVersions.V2_2, "v2.2" },
                         { ApiVersions.V2_3, "v2.3" },
                         { ApiVersions.V2_4, "v2.4" },
-                        { ApiVersions.V2_4, "v2.5" }
+                        { ApiVersions.V2_5, "v2.5" }
                     };
                 }
 

@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Core\ApiGameQueueTypes.cs" />
     <Compile Include="Core\Exceptions\BadRequest.cs" />
     <Compile Include="Core\Exceptions\BaseLoLException.cs" />
     <Compile Include="Core\Exceptions\DataNotFound.cs" />
@@ -49,6 +50,10 @@
     <Compile Include="Dto\Game\PlayerDto.cs" />
     <Compile Include="Dto\Game\RawStatsDto.cs" />
     <Compile Include="Dto\Game\RecentGamesDto.cs" />
+    <Compile Include="Dto\League\LeagueDto.cs" />
+    <Compile Include="Dto\League\LeagueEntryDto.cs" />
+    <Compile Include="Dto\League\MiniSeriesDto.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Models\Champion\Champion.cs" />
     <Compile Include="Models\Champion\ChampionList.cs" />
     <Compile Include="Core\ApiRegions.cs" />

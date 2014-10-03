@@ -76,6 +76,7 @@ namespace Team7.LoLAPIManager
         private ChampionService _champion;
         private LoLManagerConfig _configuration;
         private GameService _game;
+        private LeagueService _league;
 
         public LoLManagerConfig Configuration
         {
@@ -115,6 +116,19 @@ namespace Team7.LoLAPIManager
                 }
 
                 return _game;
+            }
+        }
+
+        public LeagueService League
+        {
+            get
+            {
+                if (_league == null)
+                {
+                    _league = new LeagueService(_configuration);
+                }
+
+                return _league;
             }
         }
 

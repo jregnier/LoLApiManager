@@ -1,4 +1,8 @@
-﻿namespace Team7.LoLAPIManager.Dto.Champion
+﻿// <copyright file="ChampionListDto.cs" company="Team7 Productions">
+//     Copyright (c) 2014. All rights reserved.
+// </copyright>
+// <author>Jason Regnier</author>
+namespace Team7.LoLAPIManager.Dto.Champion
 {
     using System.Collections.Generic;
     using System.Runtime.Serialization;
