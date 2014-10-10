@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Team7.LoLAPIManager.Core
+namespace Team7.LoLApiManager.Core
 {
     public enum ApiGameQueueTypes
     {

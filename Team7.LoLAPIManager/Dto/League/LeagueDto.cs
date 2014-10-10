@@ -2,7 +2,7 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Dto.League
+namespace Team7.LoLApiManager.Dto.League
 {
     using System.Collections.Generic;
     using System.Runtime.Serialization;

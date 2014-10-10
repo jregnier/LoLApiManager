@@ -2,10 +2,10 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager
+namespace Team7.LoLApiManager
 {
     using System;
-    using Team7.LoLAPIManager.Core;
+    using Team7.LoLApiManager.Core;
 
     /// <summary>
     /// Object holding the configuration properties needed to communicate with the Riot API.

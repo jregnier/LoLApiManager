@@ -1,4 +1,4 @@
-﻿namespace Team7.LoLAPIManager.Core.Exceptions
+﻿namespace Team7.LoLApiManager.Core.Exceptions
 {
     using System.Runtime.Serialization;
 

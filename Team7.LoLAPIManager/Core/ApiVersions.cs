@@ -1,4 +1,4 @@
-﻿namespace Team7.LoLAPIManager.Core
+﻿namespace Team7.LoLApiManager.Core
 {
     using System.Collections.Generic;
 

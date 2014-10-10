@@ -2,7 +2,7 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Models.Game
+namespace Team7.LoLApiManager.Models.Game
 {
     /// <summary>
     /// Object representing the raw stats for a given game.

@@ -2,7 +2,7 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager
+namespace Team7.LoLApiManager
 {
     using System;
     using System.IO;
@@ -26,9 +26,12 @@ namespace Team7.LoLAPIManager
                 throw new ArgumentNullException("content");
             }
 
+            DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings();
+            settings.UseSimpleDictionaryFormat = true;
+
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T), settings);
                 return (T)serializer.ReadObject(stream);
             }
         }

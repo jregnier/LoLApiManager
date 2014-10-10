@@ -2,7 +2,7 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Dto.Champion
+namespace Team7.LoLApiManager.Dto.Champion
 {
     using System.Runtime.Serialization;
 

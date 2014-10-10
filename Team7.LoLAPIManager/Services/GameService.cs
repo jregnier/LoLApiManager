@@ -2,15 +2,15 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Services
+namespace Team7.LoLApiManager.Services
 {
     using System;
     using System.Threading.Tasks;
     using AutoMapper;
-    using Team7.LoLAPIManager;
-    using Team7.LoLAPIManager.Core;
-    using Team7.LoLAPIManager.Dto.Game;
-    using Team7.LoLAPIManager.Models.Game;
+    using Team7.LoLApiManager;
+    using Team7.LoLApiManager.Core;
+    using Team7.LoLApiManager.Dto.Game;
+    using Team7.LoLApiManager.Models.Game;
 
     /// <summary>
     /// Service class used to handle the Game service.
@@ -24,7 +24,7 @@ namespace Team7.LoLAPIManager.Services
         /// A <see cref="LoLManagerConfig"/> containing the configuration information for the API.
         /// </param>
         public GameService(LoLManagerConfig config)
-            : base(config.Region, ApiVersions.V1_3, ApiEndPoints.GAME, config.Key, true)
+            : base(config.Region, ApiVersions.V1_3, ApiEndPoints.GAME, config.Key)
         {
         }
 

@@ -2,7 +2,7 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Models.League
+namespace Team7.LoLApiManager.Models.League
 {
     /// <summary>
     /// Object representing data for a given mini series.

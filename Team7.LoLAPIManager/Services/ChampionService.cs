@@ -2,16 +2,16 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Services
+namespace Team7.LoLApiManager.Services
 {
     using System;
     using System.Threading.Tasks;
     using AutoMapper;
-    using Team7.LoLAPIManager.Core;
-    using Team7.LoLAPIManager.Dto;
-    using Team7.LoLAPIManager.Dto.Champion;
-    using Team7.LoLAPIManager.Models;
-    using Team7.LoLAPIManager.Models.Champion;
+    using Team7.LoLApiManager.Core;
+    using Team7.LoLApiManager.Dto;
+    using Team7.LoLApiManager.Dto.Champion;
+    using Team7.LoLApiManager.Models;
+    using Team7.LoLApiManager.Models.Champion;
 
     /// <summary>
     /// Service class used to handle the Champion service.
@@ -30,7 +30,7 @@ namespace Team7.LoLAPIManager.Services
         /// A <see cref="LoLManagerConfig"/> containing the configuration information for the API.
         /// </param>
         public ChampionService(LoLManagerConfig config)
-            : base(config.Region, ApiVersions.V1_2, ApiEndPoints.CHAMPIONS, config.Key, true)
+            : base(config.Region, ApiVersions.V1_2, ApiEndPoints.CHAMPIONS, config.Key)
         {
         }
 

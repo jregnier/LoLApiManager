@@ -2,14 +2,14 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Services
+namespace Team7.LoLApiManager.Services
 {
     using System;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
-    using Team7.LoLAPIManager.Core;
-    using Team7.LoLAPIManager.Core.Exceptions;
+    using Team7.LoLApiManager.Core;
+    using Team7.LoLApiManager.Core.Exceptions;
 
     /// <summary>
     /// Base class for all of Riots LoL services.
@@ -20,7 +20,7 @@ namespace Team7.LoLAPIManager.Services
 
         private const string baseURL = "https://{0}.api.pvp.net/";
 
-        private const string versionedURL = "api/lol/{0}/{1}/";
+        private const string relativeURL = "api/lol/{0}/{1}/";
 
         #endregion Constants
 
@@ -28,17 +28,13 @@ namespace Team7.LoLAPIManager.Services
 
         public string ApiKey { get; private set; }
 
-        public Uri BaseUri { get; set; }
+        public Uri BaseUri { get; private set; }
 
         public ApiEndPoints EndPoint { get; private set; }
 
-        public bool IsVersioned { get; set; }
-
-        public ApiRegions Region { get; set; }
+        public ApiRegions Region { get; private set; }
 
         public ApiVersions Version { get; private set; }
-
-        public Uri VersionedUri { get; set; }
 
         #endregion Properties
 
@@ -48,20 +44,14 @@ namespace Team7.LoLAPIManager.Services
         /// <param name="region">The region to use in the web service calls.</param> <param
         /// name="ver"><The version of the particular service.</param> <param name="endPoint">The
         /// end point for the given service.</param>
-        public ServiceBase(ApiRegions region, ApiVersions ver, ApiEndPoints endPoint, string key, bool isVersioned)
+        public ServiceBase(ApiRegions region, ApiVersions ver, ApiEndPoints endPoint, string key)
         {
             Region = region;
             Version = ver;
             EndPoint = endPoint;
             ApiKey = key;
-            IsVersioned = isVersioned;
 
             BaseUri = new Uri(string.Format(baseURL, Regions.GetRegions[region]));
-
-            if (IsVersioned)
-            {
-                VersionedUri = new Uri(string.Format(versionedURL, Regions.GetRegions[region], Versions.GetVersions[ver]), UriKind.Relative);
-            }
 
             CreateMapping();
 
@@ -71,34 +61,19 @@ namespace Team7.LoLAPIManager.Services
         #endregion Constructors
 
         /// <summary>
-        /// Build the Uri to make the web call
+        /// Build the relative URL of the web service call, Override this method to change the
+        /// standard 'api/lol/{region}/{version}/' relative URL.
         /// </summary>
-        /// <param name="requestUri">The request Uri to use in the Total Uri</param>
-        /// <returns>The built Uri</returns>
-        protected virtual Uri BuildUri(Uri requestUri)
+        /// <returns>The relative URL</returns>
+        protected virtual Uri BuildRelativeUri()
         {
-            string uriString = BaseUri.OriginalString;
+            string relative = string.Format(relativeURL, Regions.GetRegions[Region], Versions.GetVersions[Version]);
 
-            if (IsVersioned)
-            {
-                uriString += VersionedUri.OriginalString;
-            }
+            relative += EndPoints.GetEndPoints[EndPoint];
 
-            uriString += EndPoints.GetEndPoints[EndPoint];
+            var relativeUri = new Uri(relative, UriKind.Relative);
 
-            if (requestUri != null)
-            {
-                uriString += requestUri;
-            }
-
-            UriBuilder uriBuilder = new UriBuilder(uriString);
-            uriBuilder.Port = -1;
-            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
-                uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + string.Format("api_key={0}", ApiKey);
-            else
-                uriBuilder.Query = string.Format("api_key={0}", ApiKey);
-
-            return uriBuilder.Uri;
+            return relativeUri;
         }
 
         protected abstract void CreateMapping();
@@ -153,6 +128,32 @@ namespace Team7.LoLAPIManager.Services
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Build the Uri to make the web call
+        /// </summary>
+        /// <param name="requestUri">The request Uri to use in the Total Uri</param>
+        /// <returns>The built Uri</returns>
+        private Uri BuildUri(Uri requestUri = null)
+        {
+            string uriString = BaseUri.OriginalString;
+
+            uriString += BuildRelativeUri().OriginalString;
+
+            if (requestUri != null)
+            {
+                uriString += requestUri;
+            }
+
+            UriBuilder uriBuilder = new UriBuilder(uriString);
+            uriBuilder.Port = -1;
+            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
+                uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + string.Format("api_key={0}", ApiKey);
+            else
+                uriBuilder.Query = string.Format("api_key={0}", ApiKey);
+
+            return uriBuilder.Uri;
         }
     }
 }

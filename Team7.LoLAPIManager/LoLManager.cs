@@ -2,11 +2,11 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager
+namespace Team7.LoLApiManager
 {
     using System;
-    using Team7.LoLAPIManager.Core;
-    using Team7.LoLAPIManager.Services;
+    using Team7.LoLApiManager.Core;
+    using Team7.LoLApiManager.Services;
 
     public class LoLManager
     {
@@ -77,6 +77,7 @@ namespace Team7.LoLAPIManager
         private LoLManagerConfig _configuration;
         private GameService _game;
         private LeagueService _league;
+        private StaticService _static;
 
         public LoLManagerConfig Configuration
         {
@@ -129,6 +130,19 @@ namespace Team7.LoLAPIManager
                 }
 
                 return _league;
+            }
+        }
+
+        public StaticService Static
+        {
+            get
+            {
+                if (_static == null)
+                {
+                    _static = new StaticService(_configuration);
+                }
+
+                return _static;
             }
         }
 

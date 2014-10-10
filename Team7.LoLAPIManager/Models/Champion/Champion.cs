@@ -2,7 +2,7 @@
 //     Copyright (c) 2014. All rights reserved.
 // </copyright>
 // <author>Jason Regnier</author>
-namespace Team7.LoLAPIManager.Models.Champion
+namespace Team7.LoLApiManager.Models.Champion
 {
     /// <summary>
     /// Data object representing a champion in the game.
