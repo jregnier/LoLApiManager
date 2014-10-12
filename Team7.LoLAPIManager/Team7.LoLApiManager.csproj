@@ -8,8 +8,8 @@
     <ProjectGuid>{44752282-F336-4221-BCDF-8BE83648707B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Team7.LoLAPIManager</RootNamespace>
-    <AssemblyName>Team7.LoLAPIManager</AssemblyName>
+    <RootNamespace>Team7.LoLApiManager</RootNamespace>
+    <AssemblyName>Team7.LoLApiManager</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,6 +36,8 @@
   <ItemGroup>
     <Compile Include="Core\ApiChampionData.cs" />
     <Compile Include="Core\ApiGameQueueTypes.cs" />
+    <Compile Include="Core\ApiItemData.cs" />
+    <Compile Include="Core\ApiItemListData.cs" />
     <Compile Include="Core\Exceptions\BadRequest.cs" />
     <Compile Include="Core\Exceptions\BaseLoLException.cs" />
     <Compile Include="Core\Exceptions\DataNotFound.cs" />
@@ -59,7 +61,7 @@
     <Compile Include="Dto\Static\Champion\ChampionDto.cs" />
     <Compile Include="Dto\Static\Champion\ChampionListDto.cs" />
     <Compile Include="Dto\Static\Champion\ChampionSpellDto.cs" />
-    <Compile Include="Dto\Static\Champion\ImageDto.cs" />
+    <Compile Include="Dto\Static\ImageDto.cs" />
     <Compile Include="Dto\Static\Champion\InfoDto.cs" />
     <Compile Include="Dto\Static\Champion\LevelTipDto.cs" />
     <Compile Include="Dto\Static\Champion\PassiveDto.cs" />
@@ -67,6 +69,14 @@
     <Compile Include="Dto\Static\Champion\SkinDto.cs" />
     <Compile Include="Dto\Static\Champion\SpellVarsDto.cs" />
     <Compile Include="Dto\Static\Champion\StatsDto.cs" />
+    <Compile Include="Dto\Static\Item\BasicDataDto.cs" />
+    <Compile Include="Dto\Static\Item\BasicDataStatsDto.cs" />
+    <Compile Include="Dto\Static\Item\GoldDto.cs" />
+    <Compile Include="Dto\Static\Item\GroupDto.cs" />
+    <Compile Include="Dto\Static\Item\ItemDto.cs" />
+    <Compile Include="Dto\Static\Item\ItemListDto.cs" />
+    <Compile Include="Dto\Static\Item\ItemTreeDto.cs" />
+    <Compile Include="Dto\Static\Item\MetaDataDto.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Models\Champion\Champion.cs" />
     <Compile Include="Models\Champion\ChampionList.cs" />
@@ -87,7 +97,7 @@
     <Compile Include="Models\Static\Champion\Champion.cs" />
     <Compile Include="Models\Static\Champion\ChampionList.cs" />
     <Compile Include="Models\Static\Champion\ChampionSpell.cs" />
-    <Compile Include="Models\Static\Champion\Image.cs" />
+    <Compile Include="Models\Static\Image.cs" />
     <Compile Include="Models\Static\Champion\Info.cs" />
     <Compile Include="Models\Static\Champion\LevelTip.cs" />
     <Compile Include="Models\Static\Champion\Passive.cs" />
@@ -95,6 +105,14 @@
     <Compile Include="Models\Static\Champion\Skin.cs" />
     <Compile Include="Models\Static\Champion\SpellVars.cs" />
     <Compile Include="Models\Static\Champion\Stats.cs" />
+    <Compile Include="Models\Static\Item\BasicData.cs" />
+    <Compile Include="Models\Static\Item\BasicDataStats.cs" />
+    <Compile Include="Models\Static\Item\Gold.cs" />
+    <Compile Include="Models\Static\Item\Group.cs" />
+    <Compile Include="Models\Static\Item\Item.cs" />
+    <Compile Include="Models\Static\Item\ItemList.cs" />
+    <Compile Include="Models\Static\Item\ItemTree.cs" />
+    <Compile Include="Models\Static\Item\MetaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\ApiEnpoints.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
